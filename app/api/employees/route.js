@@ -1,12 +1,5 @@
 import dbConnect from "@/backend/dbConnection";
 import Employee from "@/backend/models/Employee";
-import { cors } from "@/lib/cors";
-
-const handler = async (req, res) => {
-  res.status(200).json({ message: "Success" });
-};
-
-export const GET = cors(handler);
 
 export async function GET(req, { params }) {
   await dbConnect();
