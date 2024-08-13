@@ -6,7 +6,7 @@ const handler = async (req, res) => {
   res.status(200).json({ message: "Success" });
 };
 
-export default cors(handler);
+export const GET = cors(handler);
 
 export async function GET(req, { params }) {
   await dbConnect();
