@@ -1,5 +1,12 @@
 import dbConnect from "@/backend/dbConnection";
 import Employee from "@/backend/models/Employee";
+import { cors } from "@/lib/cors";
+
+const handler = async (req, res) => {
+  res.status(200).json({ message: "Success" });
+};
+
+export default cors(handler);
 
 export async function GET(req, { params }) {
   await dbConnect();
@@ -26,7 +33,6 @@ export async function GET(req, { params }) {
   }
 }
 
-
 export async function POST(req) {
   await dbConnect();
   const body = await req.json();
@@ -42,5 +48,3 @@ export async function POST(req) {
     });
   }
 }
-
-
