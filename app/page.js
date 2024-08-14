@@ -19,9 +19,7 @@ export default function Home() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/employees`
-      )
+      const response = await fetch(`/api/employees`)
         .then((res) => res.json())
         .then((res) => setEmployees(res));
     } catch (error) {
@@ -50,9 +48,7 @@ export default function Home() {
   const handleSave = async () => {
     console.log(employee);
 
-    const url = isEditing
-      ? `${process.env.NEXT_PUBLIC_API_URL}api/user/${employee._id}`
-      : `${process.env.NEXT_PUBLIC_API_URL}/api/employees`;
+    const url = isEditing ? `/api/user/${employee._id}` : `/api/employees`;
 
     const method = isEditing ? "PUT" : "POST";
 
@@ -73,12 +69,9 @@ export default function Home() {
   };
 
   const handleDelete = async (id) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/user/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`/api/user/${id}`, {
+      method: "DELETE",
+    });
 
     fetchEmployees();
   };
